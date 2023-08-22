@@ -1,0 +1,124 @@
+.searchHeader {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 100;
+  align-items: flex-start;
+  padding: 50px;
+  border-bottom: 1px solid;
+  min-width: fit-content;
+}
+.searchPage {
+}
+
+.Logo {
+  object-fit: contain;
+  height: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.searchBar {
+  max-width: fit-content;
+}
+
+.searchBar > .search > .search__input {
+  margin-top: 0;
+  width: unset;
+  margin: unset;
+  max-width: unset;
+}
+
+.searchPage__options {
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.searchPage__optionsLeft,
+.searchPage__optionsRight {
+  display: flex;
+}
+
+.searchPage__optionsLeft a,
+.searchPage__optionsRight a {
+  text-decoration: none;
+  color: gray;
+}
+.searchPage__optionsRight {
+  margin-left: 70px;
+}
+
+.searchPage__option {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.searchPage__option a {
+  margin-left: 5px;
+}
+
+.searchPage__result {
+  margin: 40px 0;
+}
+.searchPage__resultCount {
+  color: rgb(76, 74, 74);
+  font-size: 14px;
+  margin-top: 7px;
+}
+.searchPage__results {
+  max-width: 700px;
+  margin: 20px;
+  margin-left: 140px;
+  margin-bottom: 100px;
+}
+.searchPage__result a {
+  text-decoration: none;
+}
+.searchPage__result a:hover {
+  text-decoration: underline;
+}
+
+.searchPage__img {
+  object-fit: contain;
+  height: 25px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 512px) {
+  .searchPage__results {
+    min-width: 150vw;
+  }
+
+  .searchPage__resultCount {
+    color: rgb(76, 74, 74);
+    font-size: 15px;
+    margin-top: 17px;
+  }
+
+  .searchHeader {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+    align-items: flex-start;
+    padding-bottom: 70px;
+    border-bottom: 1px solid;
+    min-width: fit-content;
+  }
+
+  .searchPage__results {
+    min-width: 150vw;
+    margin: 5px;
+    margin-left: 150px;
+    margin-bottom: 10px;
+  }
+  .searchPage__result {
+    margin: 50px 0;
+  }
+  .searchPage__optionsRight {
+    margin-left: 10px;
+  }
+}

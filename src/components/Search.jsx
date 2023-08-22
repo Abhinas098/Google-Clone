@@ -7,8 +7,8 @@ import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useReducerVal } from "../store/StateProvider";
 
-const Search = () => {
-  const [{}, dispatch] = useReducerVal();
+const Search = ({ hide = false, placeholder = false }) => {
+  const [{ val }, dispatch] = useReducerVal();
 
   const [input, setInput] = useState("");
   const history = useHistory();
@@ -29,15 +29,28 @@ const Search = () => {
     <form className="search">
       <div className="search__input">
         <SearchIcon onClick={searchHandler} className="search__inputIco" />
-        <input value={input} onChange={(e) => setInput(e.target.value)} />
+        <input
+          placeholder={placeholder && val}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
         <MicIcon />
       </div>
-      <div className="search__buttons">
-        <Button type="submit" onClick={searchHandler} variant="outlined">
-          Google Search
-        </Button>
-        <Button variant="outlined">I'm Feeling Lucky</Button>
-      </div>
+      {!hide ? (
+        <div className="search__buttons">
+          <Button type="submit" onClick={searchHandler} variant="outlined">
+            Google Search
+          </Button>
+          <Button variant="outlined">I'm Feeling Lucky</Button>
+        </div>
+      ) : (
+        <div className="search__buttonsHidden">
+          <Button type="submit" onClick={searchHandler} variant="outlined">
+            Google Search
+          </Button>
+          <Button variant="outlined">I'm Feeling Lucky</Button>
+        </div>
+      )}
     </form>
   );
 };

@@ -21,6 +21,8 @@ const Home = () => {
           <Avatar />
         </div>
       </div>
+      <br />
+      <br />
       <div className="home__body">
         <img
           src="https://www.google.co.in/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"

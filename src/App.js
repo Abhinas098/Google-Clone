@@ -2,10 +2,12 @@ import "./App.css";
 import Home from "./pages/Home";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useReducerVal } from "./store/StateProvider";
+// import { useReducerVal } from "./store/StateProvider";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
-  const [{ val }]= useReducerVal();
+  // const [{ val }] = useReducerVal();
+
   return (
     <div className="App">
       <Router>
@@ -15,7 +17,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/search" exact>
-            <h1>{val}</h1>
+            <SearchPage />
           </Route>
         </Switch>
       </Router>
