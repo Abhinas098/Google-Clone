@@ -10,13 +10,13 @@ const Home = () => {
     <div className="Home">
       <div className="home__header">
         <div className="home__headerLeft">
-          <Link to="/about">About</Link>
-          <Link to="/store">Store</Link>
+          <Link to="/">About</Link>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.amazon.in">Store</a>
         </div>
 
         <div className="home__headerRight">
-          <Link to="https://www.google.com">Gmail</Link>
-          <Link to="/images">Images</Link>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.gmail.com">Gmail</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/images">Images</a>
           <AppsIcon />
           <Avatar />
         </div>

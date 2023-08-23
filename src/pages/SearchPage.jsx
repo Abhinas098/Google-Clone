@@ -52,7 +52,7 @@ const SearchPage = () => {
             <div className="searchPage__optionsLeft">
               <div className="searchPage__option">
                 <SearchIcon />
-                <Link to="/">All</Link>
+                <Link to="/search">All</Link>
               </div>
               <div className="searchPage__option">
                 <ImageIcon />
@@ -60,7 +60,13 @@ const SearchPage = () => {
               </div>
               <div className="searchPage__option">
                 <LocationOnSharpIcon />
-                <Link to="/maps">Maps</Link>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.google.com/maps"
+                >
+                  Map
+                </a>
               </div>
               <div className="searchPage__option">
                 <MoreVertSharpIcon />
@@ -71,7 +77,13 @@ const SearchPage = () => {
             <div className="searchPage__optionsRight">
               <div className="searchPage__option">
                 <DescriptionIcon />
-                <Link to="/news">News</Link>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.google.com/search?q=news"
+                >
+                  News
+                </a>
               </div>
               <div className="searchPage__option">
                 <LocalOfferIcon />
@@ -88,43 +100,46 @@ const SearchPage = () => {
         </div>
       </div>
       {data !== null && (
-        <div className="searchPage__results">
-          <p className="searchPage__resultCount">
-            About {data.searchInformation.formattedTotalResults} results in (
-            {data?.searchInformation.formattedSearchTime}seconds) of {val}
-          </p>
+        <>
+          {" "}
+          <div className="searchPage__results">
+            <p className="searchPage__resultCount">
+              About {data.searchInformation.formattedTotalResults} results in (
+              {data?.searchInformation.formattedSearchTime}seconds) of {val}
+            </p>
 
-          {data?.items.map((item) => (
-            <div className="searchPage__result">
-              <Link className="searchPage__resultTitle" to={item.link}>
-                <h2>{item.title}</h2>
-              </Link>
-              <Link to={item.link}>
-                {item.pagemap?.cse_image?.length > 0 &&
-                  item.pagemap?.cse_image[0]?.src && (
-                    <img
-                      src={
-                        item.pagemap?.cse_image?.length > 0 &&
-                        item.pagemap?.cse_image[0]?.src
-                      }
-                      alt=""
-                      className="searchPage__img"
-                    />
-                  )}
-                {item.displayLink}
-              </Link>
+            {data?.items.map((item) => (
+              <div className="searchPage__result">
+                <Link className="searchPage__resultTitle" to={item.link}>
+                  <h2>{item.title}</h2>
+                </Link>
+                <Link to={item.link}>
+                  {item.pagemap?.cse_image?.length > 0 &&
+                    item.pagemap?.cse_image[0]?.src && (
+                      <img
+                        src={
+                          item.pagemap?.cse_image?.length > 0 &&
+                          item.pagemap?.cse_image[0]?.src
+                        }
+                        alt=""
+                        className="searchPage__img"
+                      />
+                    )}
+                  {item.displayLink}
+                </Link>
 
-              <p className="searchPage__resultSnippet">{item.snippet}</p>
-            </div>
-          ))}
-        </div>
+                <p className="searchPage__resultSnippet">{item.snippet}</p>
+              </div>
+            ))}
+          </div>
+          <div className="classCenter">
+            {" "}
+            <p onClick={counter1}>1</p>
+            <p onClick={counter2}>2 </p> <p onClick={counter3}> 3 </p>{" "}
+            <p onClick={counterHandler}> next</p>
+          </div>
+        </>
       )}
-      <div className="classCenter">
-        {" "}
-        <p onClick={counter1}>1</p>
-        <p onClick={counter2}>2 </p> <p onClick={counter3}> 3 </p>{" "}
-        <p onClick={counterHandler}> next</p>
-      </div>
     </div>
   );
 };
