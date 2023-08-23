@@ -9,12 +9,30 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import LocationOnSharpIcon from "@mui/icons-material/LocationOnSharp";
 import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import useSearch from "../hook/useSearch";
+import { useState } from "react";
 
 const SearchPage = () => {
+  const [counter, setCounter] = useState(1);
+
   const [{ val }] = useReducerVal();
 
-  const { data } = useSearch(val);
+  const { data } = useSearch(val, counter);
   console.log(data);
+
+  const counterHandler = () => {
+    setCounter(counter + 10);
+  };
+  const counter1 = () => {
+    setCounter(1);
+  };
+  const counter2 = () => {
+    setCounter(11);
+  };
+  const counter3 = () => {
+    setCounter(21);
+  };
+
+  console.log(counter);
 
   return (
     <div className="searchPage">
@@ -41,14 +59,6 @@ const SearchPage = () => {
                 <Link to="/images">Images</Link>
               </div>
               <div className="searchPage__option">
-                <DescriptionIcon />
-                <Link to="/news">News</Link>
-              </div>
-              <div className="searchPage__option">
-                <LocalOfferIcon />
-                <Link to="/shopping">Shopping</Link>
-              </div>
-              <div className="searchPage__option">
                 <LocationOnSharpIcon />
                 <Link to="/maps">Maps</Link>
               </div>
@@ -60,6 +70,14 @@ const SearchPage = () => {
 
             <div className="searchPage__optionsRight">
               <div className="searchPage__option">
+                <DescriptionIcon />
+                <Link to="/news">News</Link>
+              </div>
+              <div className="searchPage__option">
+                <LocalOfferIcon />
+                <Link to="/shopping">Shopping</Link>
+              </div>
+              <div className="searchPage__option">
                 <Link to="/settings">Settings</Link>
               </div>
               <div className="searchPage__option">
@@ -69,7 +87,6 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
-
       {data !== null && (
         <div className="searchPage__results">
           <p className="searchPage__resultCount">
@@ -102,6 +119,12 @@ const SearchPage = () => {
           ))}
         </div>
       )}
+      <div className="classCenter">
+        {" "}
+        <p onClick={counter1}>1</p>
+        <p onClick={counter2}>2 </p> <p onClick={counter3}> 3 </p>{" "}
+        <p onClick={counterHandler}> next</p>
+      </div>
     </div>
   );
 };

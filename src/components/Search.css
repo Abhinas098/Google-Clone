@@ -9,6 +9,7 @@
   margin: 0 auto;
   max-width: 584px;
   margin-top: 30px;
+  overflow: hidden;
 }
 .search__input > input {
   flex: 1;
