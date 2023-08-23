@@ -15,7 +15,7 @@ const Home = () => {
         </div>
 
         <div className="home__headerRight">
-          <Link to="/gmail">Gmail</Link>
+          <Link to="https://www.google.com">Gmail</Link>
           <Link to="/images">Images</Link>
           <AppsIcon />
           <Avatar />

@@ -1,7 +1,7 @@
 .search__input {
   display: flex;
   align-items: center;
-  border: 1px solid lightblue;
+  border: 1px solid rgb(95, 96, 97);
   height: 30px;
   padding: 10px 20px;
   border-radius: 999px;

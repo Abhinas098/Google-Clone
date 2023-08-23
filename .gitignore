@@ -2,10 +2,9 @@
 
 # dependencies
 /node_modules
-/src/key.jsx
 /.pnp
 .pnp.js
-
+.env
 # testing
 /coverage
 
