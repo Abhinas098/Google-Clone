@@ -1,10 +1,14 @@
 import "./App.css";
 import Home from "./pages/Home";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 // import { useReducerVal } from "./store/StateProvider";
 import SearchPage from "./pages/SearchPage";
-import ImagePage from "./pages/ImagePage";
 
 function App() {
   return (
@@ -19,8 +23,9 @@ function App() {
             <SearchPage />
           </Route>
           <Route path="/images" exact>
-            <ImagePage />
+            <SearchPage />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Router>
     </div>

@@ -1,6 +1,6 @@
 import "./SearchPage.css";
 import { useReducerVal } from "../store/StateProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Search from "../components/Search";
 import SearchIcon from "@mui/icons-material/Search";
 import ImageIcon from "@mui/icons-material/Image";
@@ -9,9 +9,18 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import LocationOnSharpIcon from "@mui/icons-material/LocationOnSharp";
 import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import useSearch from "../hook/useSearch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import SearchResult from "../components/SearchResult";
+import ImageResult from "../components/ImageResult";
 
 const SearchPage = () => {
+  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState();
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
+
   const [counter, setCounter] = useState(1);
 
   const [{ val }] = useReducerVal();
@@ -99,44 +108,29 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
+      <></>
+
       {data !== null && (
         <>
-          {" "}
           <div className="searchPage__results">
             <p className="searchPage__resultCount">
               About {data.searchInformation.formattedTotalResults} results in (
               {data?.searchInformation.formattedSearchTime}seconds) of {val}
             </p>
-
-            {data?.items.map((item) => (
-              <div className="searchPage__result">
-                <Link className="searchPage__resultTitle" to={item.link}>
-                  <h2>{item.title}</h2>
-                </Link>
-                <Link to={item.link}>
-                  {item.pagemap?.cse_image?.length > 0 &&
-                    item.pagemap?.cse_image[0]?.src && (
-                      <img
-                        src={
-                          item.pagemap?.cse_image?.length > 0 &&
-                          item.pagemap?.cse_image[0]?.src
-                        }
-                        alt=""
-                        className="searchPage__img"
-                      />
-                    )}
-                  {item.displayLink}
-                </Link>
-
-                <p className="searchPage__resultSnippet">{item.snippet}</p>
-              </div>
+            {data?.items.map((item,index) => (
+              <>
+                {currentPath === "/search" && (
+                  <SearchResult item={item}/>
+                )}
+                {currentPath === "/images" && <ImageResult item={item} />}
+              </>
             ))}
-          </div>
-          <div className="classCenter">
-            {" "}
-            <p onClick={counter1}>1</p>
-            <p onClick={counter2}>2 </p> <p onClick={counter3}> 3 </p>{" "}
-            <p onClick={counterHandler}> next</p>
+            <div className="classCenter">
+              {" "}
+              <p onClick={counter1}>1</p>
+              <p onClick={counter2}>2 </p> <p onClick={counter3}> 3 </p>{" "}
+              <p onClick={counterHandler}> next</p>
+            </div>
           </div>
         </>
       )}

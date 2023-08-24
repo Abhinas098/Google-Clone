@@ -98,6 +98,13 @@
 .classCenter p:hover {
   text-decoration: underline;
 }
+.imagePage__img {
+  object-fit: contain;
+  height: 25vh;
+  width: 40vw;
+  margin: 10px 70px;
+}
+
 @media screen and (max-width: 512px) {
   .Logo {
     margin-left: 40%;
@@ -140,5 +147,9 @@
   }
   .searchPage__optionsRight {
     margin-left: 10px;
+  }
+  .imagePage__img {
+    width: 50vw;
+    margin-bottom: 1%;
   }
 }
